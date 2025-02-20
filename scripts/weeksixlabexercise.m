@@ -295,7 +295,24 @@ disp(['Mean ISFC (across subjects and ROI pairs): ' num2str(mean(loo_ISFC(:)))])
 
 %% representational_similarity_to_behavior 
 
-% --- /scripts/representational_similarity_to_behavior.m ---
+% In this section, I compute the behavioral similarity matrix and 
+% relate it to the temporal inter-subject correlation (ISC) matrix. 
+% 
+% The behavioral similarity is calculated using the inverse of the 
+% absolute difference between each pair of subjects' behavioral scores.
+% A higher similarity is assigned to pairs of subjects with closer 
+% behavioral scores. This operationalizes the idea that more similar 
+% behaviors (i.e., closer behavioral scores) should correspond to 
+% more similar neural responses (higher ISC) in relevant brain regions.
+%
+% Hypothesis:
+% I hypothesize that higher behavioral similarity between pairs of 
+% subjects (reflected in the behavioral_similarity matrix) will 
+% correspond to higher ISC in specific regions of interest (ROIs). 
+% This would suggest that behavioral similarity influences the degree 
+% of neural synchronization, supporting the idea that ISC may reflect
+% shared cognitive or perceptual processes related to behavioral patterns.
+
 
 % Specify the data folder path
 data_folder = 'data';
@@ -358,3 +375,20 @@ save(fullfile(data_folder,'representational_similarity_results.mat'), 'behaviora
 disp('Representational similarity analysis completed and results saved.');
 
 
+% Results:
+% The correlation between ISC and behavioral similarity for each ROI
+% was computed and the results are as follows:
+% - ROI 1: 0.0419
+% - ROI 2: -0.1088
+% - ROI 3: -0.0330
+% - ROI 4: 0.0494
+% - ROI 5: -0.1036
+% 
+% Interpretation:
+% The correlation values are relatively low and in some cases negative, 
+% suggesting little to no strong relationship between behavioral similarity 
+% and ISC in these ROIs. This may imply that behavioral similarity does 
+% not strongly influence the degree of neural synchronization in the regions 
+% examined, or that other factors might be contributing to ISC in these 
+% brain areas. Further analysis or additional data may be needed to 
+% explore these findings in more depth.
